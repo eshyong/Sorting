@@ -1,6 +1,5 @@
-#include <cstdlib>
 #include <ctime>
-#include <cstring>
+#include <algorithm>
 #include <iostream>
 
 void mergesort(int *array, int size) {
@@ -8,27 +7,18 @@ void mergesort(int *array, int size) {
 		return;
 	mergesort(array, size / 2);
 	mergesort(array + size / 2, size - (size / 2));
-	int* first = new int[size / 2];
-	int* second = new int[size - size / 2];
-	for (int i = 0; i < size / 2; i++)
-		first[i] = array[i];
-	for (int i = 0; i < size - (size / 2); i++) 
-		second[i] = array[i + size / 2];
-	int i = 0, j = 0, k = 0;
+	int* copy = new int[size];
+	std::copy(array, array + size, copy);
+	int i = 0, j = size / 2, k = 0;
 	while (i < size / 2 || j < size - (size / 2)) {
-		if (i == size / 2) {
-			array[k++] = second[j++];
-		} else if (j == size - (size / 2)) {
-			array[k++] = first[i++];
-		} else {
-			if (first[i] < second[j])
-				array[k++] = first[i++];
-			else
-				array[k++] = second[j++];
-		}
+		if (i == size / 2)
+			array[k++] = copy[j++];
+		else if (j == size)
+			array[k++] = copy[i++];
+		else 
+			array[k++] = copy[i] < copy[j] ? copy[i++] : copy[j++];
 	}
-	delete[] first;
-	delete[] second;
+	delete[] copy;
 }
 
 int main(int argc, char* argv[]) {
@@ -55,7 +45,7 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));
 	static int* array = new int[size];
 	static int* check = new int[size * 10];
-	memset(check, 0, size * 10);
+	std::fill(check, check + size * 10, 0);
 	
 	std::cout << "Unsorted array: ";
 	for (int i = 0; i < size; i++) {
@@ -73,7 +63,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Sorted array: ";
 	/* for (int i = 0; i < size; i++) {
 		std::cout << array[i] << " ";
-	} */	
+	} */
 	std::cout << std::endl;
 
 	delete[] array;

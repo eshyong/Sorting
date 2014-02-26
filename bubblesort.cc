@@ -1,8 +1,5 @@
-#include <cstdlib>
 #include <ctime>
-#include <cstring>
 #include <iostream>
-#include <unordered_map>
 
 void bubblesort(int* array, int size) {
 	bool switched = true;
@@ -43,7 +40,7 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));
 	static int* array = new int[size];
 	static int* check = new int[size * 10];
-	memset(check, 0, size * 10);
+	std::fill(check, check + size * 10, 0);
 	
 	std::cout << "Unsorted array: ";
 	for (int i = 0; i < size; i++) {
