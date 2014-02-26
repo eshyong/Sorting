@@ -42,12 +42,12 @@ int main(int argc, char* argv[]) {
 
 	size = std::atoi(argv[1]);
 	if (size > 10000000) {
-		std::cout << "integer too large, possible overflow\naborting\n";
+		std::cout << "integer too large, possible overflow\naborting" << std::endl;
 		goto ret;
 	}
 
 	if (size <= 0) {
-		std::cout << "cannot create an array of that size\naborting\n";
+		std::cout << "cannot create an array of that size\naborting" << std::endl;
 		goto ret;
 	}
 
