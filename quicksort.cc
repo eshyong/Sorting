@@ -8,7 +8,7 @@ void quicksort(int *array, int size) {
 	int pivot = array[rand_idx];
 
 	int i = 0;
-	int j = size;
+	int j = size - 1;
 	
 	while (i != j) {
 		while (array[i] < pivot) // Find an element >= pivot on the left.
