@@ -2,7 +2,9 @@
 #include <iostream>
 
 void quicksort(int *array, int size) {
-	if (size <= 1) return;
+	if (size <= 1) 
+		return;
+	
 	// Pick pivot randomly.
 	int rand_idx = rand() % size;
 	int pivot = array[rand_idx];
@@ -19,8 +21,8 @@ void quicksort(int *array, int size) {
 		array[i] = array[j];
 		array[j] = swap;
 	}
-	quicksort(array, i);
-	quicksort(array + i, size - i);
+	quicksort(array, i);            // Sort the left side of the pivot.
+	quicksort(array + i, size - i); // Sort the right side of the pivot.
 }
 
 int main(int argc, char* argv[]) {
@@ -55,7 +57,7 @@ int main(int argc, char* argv[]) {
 		if (check[element] != 1) {
 			check[element] = 1;
 			array[i] = element;
-			// std::cout << array[i] << " ";
+			// std::cout << array[i] << " "; // Uncomment this line to print unsorted array.
 		} else
 			i--;
 	}
@@ -65,7 +67,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Sorted array: ";
 	/* for (int i = 0; i < size; i++) {
 		std::cout << array[i] << " ";
-	} */
+	} */ // Uncomment these lines to print sorted array.
 	std::cout << std::endl;
 
 	delete[] array;

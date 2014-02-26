@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
 		if (check[element] != 1) {
 			check[element] = 1;
 			array[i] = element;
-			// std::cout << array[i] << " ";
+			// std::cout << array[i] << " "; // Uncomment this line to print unsorted array.
 		} else
 			i--;
 	}
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Sorted array: ";
 	/* for (int i = 0; i < size; i++) {
 		std::cout << array[i] << " ";
-	} */
+	} */ // Uncomment these lines to print sorted array.
 	std::cout << std::endl;
 
 	delete[] array;

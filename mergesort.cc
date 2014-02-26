@@ -5,12 +5,14 @@
 void mergesort(int *array, int size) {
 	if (size == 1)
 		return;
-	mergesort(array, size / 2);
-	mergesort(array + size / 2, size - (size / 2));
+	mergesort(array, size / 2);                     // Sort left half.
+	mergesort(array + size / 2, size - (size / 2)); // Sort right half.
+	
+	// Copy the array and partition into two halves, using i and j.
 	int* copy = new int[size];
 	std::copy(array, array + size, copy);
 	int i = 0, j = size / 2, k = 0;
-	while (i < size / 2 || j < size - (size / 2)) {
+	while (i < size / 2 || j < size) { // Copy from i or from j, depending on which element is smaller.
 		if (i == size / 2)
 			array[k++] = copy[j++];
 		else if (j == size)
@@ -53,7 +55,7 @@ int main(int argc, char* argv[]) {
 		if (check[element] != 1) {
 			check[element] = 1;
 			array[i] = element;
-			// std::cout << array[i] << " ";
+			// std::cout << array[i] << " "; // Uncomment this to print unsorted array.
 		} else
 			i--;
 	}
@@ -63,7 +65,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Sorted array: ";
 	/* for (int i = 0; i < size; i++) {
 		std::cout << array[i] << " ";
-	} */
+	} */ // Uncomment these lines to print sorted array.
 	std::cout << std::endl;
 
 	delete[] array;
