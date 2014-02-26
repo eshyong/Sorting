@@ -1,7 +1,7 @@
 #include <ctime>
 #include <iostream>
 
-void quicksort(int *array, int size) {
+void quicksort(int* array, int size) {
 	if (size <= 1) 
 		return;
 	

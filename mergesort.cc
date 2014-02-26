@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
-void mergesort(int *array, int size) {
+void mergesort(int* array, int size) {
 	if (size == 1)
 		return;
 	mergesort(array, size / 2);                     // Sort left half.
